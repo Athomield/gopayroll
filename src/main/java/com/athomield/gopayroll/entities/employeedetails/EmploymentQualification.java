@@ -20,7 +20,7 @@ public class EmploymentQualification {
     private String description;
 
     @ManyToOne
-    @JoinColumn(name="employment_details_id", nullable=false)
+    @JoinColumn(name="employment_details_id")
     private EmploymentDetails employmentDetails;
 
     public EmploymentQualification(String code, String description) {

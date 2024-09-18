@@ -1,0 +1,22 @@
+CREATE SEQUENCE IF NOT EXISTS collective_convention_seq START WITH 1 INCREMENT BY 50;
+
+CREATE SEQUENCE IF NOT EXISTS department_seq START WITH 1 INCREMENT BY 50;
+
+CREATE SEQUENCE IF NOT EXISTS employee_employment_details_seq START WITH 1 INCREMENT BY 50;
+
+CREATE SEQUENCE IF NOT EXISTS employee_seq START WITH 1 INCREMENT BY 50;
+
+CREATE SEQUENCE IF NOT EXISTS employment_category_seq START WITH 1 INCREMENT BY 50;
+
+CREATE SEQUENCE IF NOT EXISTS employment_position_seq START WITH 1 INCREMENT BY 50;
+
+CREATE SEQUENCE IF NOT EXISTS employment_qualification_seq START WITH 1 INCREMENT BY 50;
+
+ALTER TABLE company
+    ADD employment_details_id BIGINT;
+
+ALTER TABLE company
+    ADD CONSTRAINT uc_company_employment_details UNIQUE (employment_details_id);
+
+ALTER TABLE company
+    ADD CONSTRAINT FK_COMPANY_ON_EMPLOYMENT_DETAILS FOREIGN KEY (employment_details_id) REFERENCES employment_details (id);

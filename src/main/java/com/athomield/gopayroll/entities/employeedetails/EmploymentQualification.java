@@ -20,7 +20,7 @@ public class EmploymentQualification {
 
     private String description;
 
-    @JsonBackReference
+    @JsonBackReference(value = "emp_det_emp_qual")
     @ManyToOne
     @JoinColumn(name="employment_details_id")
     private EmploymentDetails employmentDetails;

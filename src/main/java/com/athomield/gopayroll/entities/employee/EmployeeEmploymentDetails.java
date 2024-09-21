@@ -19,7 +19,7 @@ public class EmployeeEmploymentDetails {
     private Long id;
 
     @OneToOne(mappedBy = "employeeEmploymentDetails")
-    @JsonManagedReference
+    @JsonManagedReference(value = "emp_emp_emp_det")
     private Employee employee;
 
     private long employmentCategoryId;

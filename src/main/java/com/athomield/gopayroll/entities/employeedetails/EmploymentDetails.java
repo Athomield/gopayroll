@@ -22,23 +22,23 @@ public class EmploymentDetails {
     @OneToOne(mappedBy = "employmentDetails")
     private Company company;
 
-    @JsonManagedReference
+    @JsonManagedReference(value = "emp_det_emp_cat")
     @OneToMany(mappedBy = "employmentDetails")
     private List<EmploymentCategory> employmentCategories;
 
-    @JsonManagedReference
+    @JsonManagedReference(value = "emp_det_emp_pos")
     @OneToMany(mappedBy = "employmentDetails")
     private List<EmploymentPosition> employmentPositions;
 
-    @JsonManagedReference
+    @JsonManagedReference(value = "emp_det_coll_conv")
     @OneToMany(mappedBy = "employmentDetails")
     private List<CollectiveConvention> collectiveConventions;
 
-    @JsonManagedReference
+    @JsonManagedReference(value = "emp_det_emp_qual")
     @OneToMany(mappedBy = "employmentDetails")
     private List<EmploymentQualification> employmentQualifications;
 
-    @JsonManagedReference
+    @JsonManagedReference(value = "emp_det_dep")
     @OneToMany(mappedBy = "employmentDetails")
     private List<Department> departments;
 }

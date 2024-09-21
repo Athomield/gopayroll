@@ -20,7 +20,7 @@ public class CollectiveConvention {
 
     private String description;
 
-    @JsonBackReference
+    @JsonBackReference(value = "emp_det_coll_conv")
     @ManyToOne
     @JoinColumn(name="employment_details_id")
     private EmploymentDetails employmentDetails;

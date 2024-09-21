@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/api/departments")
 public class DepartmentController {
 
@@ -21,6 +22,8 @@ public class DepartmentController {
     // Create a new Department
     @PostMapping
     public ResponseEntity<Department> createDepartment(@RequestBody Department department) {
+        System.out.println(department);
+        System.out.println(department.getId());
         Department savedDepartment = departmentService.saveDepartment(department);
         return ResponseEntity.ok(savedDepartment);
     }

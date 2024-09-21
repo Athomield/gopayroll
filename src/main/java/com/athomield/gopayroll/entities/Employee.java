@@ -24,14 +24,14 @@ public class Employee {
     private double salary;
 
     @ManyToOne
-    @JsonBackReference
+    @JsonBackReference(value = "emp_comp")
     @JoinColumn(name = "company_id")
     private Company company;
 
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "employee_employment_details_id", referencedColumnName = "id")
-    @JsonBackReference
+    @JsonBackReference(value = "emp_emp_emp_det")
     private EmployeeEmploymentDetails employeeEmploymentDetails;
 
     public Employee(String name, String email, double salary, Company company) {

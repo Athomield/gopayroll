@@ -21,7 +21,7 @@ public class Department {
     private String description;
 
     @ManyToOne
-    @JsonBackReference
+    @JsonBackReference(value = "emp_det_dep")
     @JoinColumn(name="employment_details_id")
     private EmploymentDetails employmentDetails;
 

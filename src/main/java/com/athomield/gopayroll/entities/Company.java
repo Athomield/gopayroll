@@ -24,13 +24,13 @@ public class Company {
 
     private String address;
 
-    @JsonManagedReference
+    @JsonManagedReference(value = "emp_comp")
     @OneToMany(mappedBy = "company", cascade = CascadeType.ALL)
     private List<Employee> employees;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "employment_details_id", referencedColumnName = "id")
-    @JsonBackReference
+    @JsonBackReference(value = "comp_emp_det")
     private EmploymentDetails employmentDetails;
 
     public Company(String name, String address) {

@@ -1,5 +1,6 @@
 package com.athomield.gopayroll.entities.employeedetails;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,6 +20,7 @@ public class EmploymentPosition {
 
     private String description;
 
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name="employment_details_id")
     private EmploymentDetails employmentDetails;

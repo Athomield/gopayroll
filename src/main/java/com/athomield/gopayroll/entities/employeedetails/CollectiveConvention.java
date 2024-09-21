@@ -1,5 +1,6 @@
 package com.athomield.gopayroll.entities.employeedetails;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,14 +20,9 @@ public class CollectiveConvention {
 
     private String description;
 
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name="employment_details_id")
     private EmploymentDetails employmentDetails;
-
-    public CollectiveConvention(String code, String description) {
-        this.code = code;
-        this.description = description;
-    }
-
 
 }

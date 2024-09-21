@@ -2,6 +2,7 @@ package com.athomield.gopayroll.entities.employee;
 
 import com.athomield.gopayroll.entities.Company;
 import com.athomield.gopayroll.entities.Employee;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,15 +19,16 @@ public class EmployeeEmploymentDetails {
     private Long id;
 
     @OneToOne(mappedBy = "employeeEmploymentDetails")
+    @JsonManagedReference
     private Employee employee;
 
-    private String employmentCategoryId;
+    private long employmentCategoryId;
 
-    private String employmentPositionsId;
+    private long employmentPositionsId;
 
-    private String collectiveConventionsId;
+    private long collectiveConventionsId;
 
-    private String employmentQualificationsId;
+    private long employmentQualificationsId;
 
-    private String departmentId;
+    private long departmentId;
 }

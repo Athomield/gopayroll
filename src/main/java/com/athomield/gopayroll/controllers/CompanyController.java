@@ -1,7 +1,9 @@
 package com.athomield.gopayroll.controllers;
 
 import com.athomield.gopayroll.entities.Company;
+import com.athomield.gopayroll.entities.employeedetails.EmploymentDetails;
 import com.athomield.gopayroll.services.CompanyService;
+import com.athomield.gopayroll.services.employeedetails.EmploymentDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,9 +18,19 @@ public class CompanyController {
     @Autowired
     private CompanyService companyService;
 
+    @Autowired
+    private EmploymentDetailsService employmentDetailsService;
+
     @PostMapping
     public ResponseEntity<Company> createCompany(@RequestBody Company company) {
-        Company savedCompany = companyService.saveCompany(company);
+        Company newCompany = company;
+        EmploymentDetails employmentDetails = new EmploymentDetails();
+
+        newCompany.setEmploymentDetails(employmentDetails);
+        employmentDetailsService.saveEmploymentDetails(employmentDetails);
+
+        Company savedCompany = companyService.saveCompany(newCompany);
+
         return ResponseEntity.ok(savedCompany);
     }
 

@@ -39,6 +39,8 @@ public class EmployeeController {
         employeeEmploymentDetails.setEmployee(savedEmployee);
         employeeEmploymentDetailsService.saveEmployeeEmploymentDetails(employeeEmploymentDetails);
 
+        employeeEmploymentDetails.setDepartmentId(employeeRequestBody.getDepartment_id());
+
         Employee gotEmployee = employeeService.getEmployeeById(savedEmployee.getId());
         gotEmployee.setEmployeeEmploymentDetails(employeeEmploymentDetails);
         employeeService.updateEmployee(gotEmployee.getId(),gotEmployee);

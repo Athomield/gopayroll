@@ -1,7 +1,11 @@
 package com.athomield.gopayroll.controllers.employeedetails;
 
+import com.athomield.gopayroll.entities.Company;
 import com.athomield.gopayroll.entities.employeedetails.Department;
+import com.athomield.gopayroll.entities.requestbodies.DepartmentRequestBody;
+import com.athomield.gopayroll.services.CompanyService;
 import com.athomield.gopayroll.services.employeedetails.DepartmentService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,17 +17,17 @@ import java.util.Optional;
 @RequestMapping("/api/departments")
 public class DepartmentController {
 
-    private final DepartmentService departmentService;
-
-    public DepartmentController(DepartmentService departmentService) {
-        this.departmentService = departmentService;
-    }
+    @Autowired
+    private DepartmentService departmentService;
+    @Autowired
+    private CompanyService companyService;
 
     // Create a new Department
     @PostMapping
-    public ResponseEntity<Department> createDepartment(@RequestBody Department department) {
-        System.out.println(department);
-        System.out.println(department.getId());
+    public ResponseEntity<Department> createDepartment(@RequestBody DepartmentRequestBody departmentRequestBody) {
+        Department department = new Department(departmentRequestBody.getCode(),departmentRequestBody.getDescription());
+        Company company = companyService.getCompanyById(departmentRequestBody.getCompany_id());
+        department.setEmploymentDetails(company.getEmploymentDetails());
         Department savedDepartment = departmentService.saveDepartment(department);
         return ResponseEntity.ok(savedDepartment);
     }

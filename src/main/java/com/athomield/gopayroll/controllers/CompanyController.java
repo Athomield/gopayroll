@@ -26,9 +26,9 @@ public class CompanyController {
         Company newCompany = company;
         EmploymentDetails employmentDetails = new EmploymentDetails();
 
+        employmentDetails = employmentDetailsService.saveEmploymentDetails(employmentDetails);
+        
         newCompany.setEmploymentDetails(employmentDetails);
-        employmentDetailsService.saveEmploymentDetails(employmentDetails);
-
         Company savedCompany = companyService.saveCompany(newCompany);
 
         return ResponseEntity.ok(savedCompany);

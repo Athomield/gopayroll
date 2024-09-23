@@ -20,4 +20,6 @@ public class EmployeeRequestBody {
 
     private Long company_id;
 
+    private Long department_id;
+
 }

@@ -23,6 +23,11 @@ public class Employee {
 
     private double salary;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "address_id", referencedColumnName = "id")
+    @JsonBackReference(value = "emp_addr")
+    Address address;
+
     @ManyToOne
     @JsonBackReference(value = "emp_comp")
     @JoinColumn(name = "company_id")

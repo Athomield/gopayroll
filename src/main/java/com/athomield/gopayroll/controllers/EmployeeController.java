@@ -33,6 +33,7 @@ public class EmployeeController {
 
         Employee newEmployee = new Employee(employeeRequestBody.getName(), employeeRequestBody.getEmail(), employeeRequestBody.getSalary(), employeeCompany);
         newEmployee.setCompany(employeeCompany);
+        newEmployee.setAddress(employeeRequestBody.getAddress());
         Employee savedEmployee = employeeService.saveEmployee(newEmployee);
 
         EmployeeEmploymentDetails employeeEmploymentDetails = new EmployeeEmploymentDetails();

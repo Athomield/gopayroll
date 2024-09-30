@@ -1,4 +1,4 @@
-package com.athomield.gopayroll.entities.requestbodies;
+package com.athomield.gopayroll.entities.dto;
 
 import lombok.Data;
 

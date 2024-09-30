@@ -3,7 +3,7 @@ package com.athomield.gopayroll.controllers;
 import com.athomield.gopayroll.entities.Company;
 import com.athomield.gopayroll.entities.Employee;
 import com.athomield.gopayroll.entities.employee.EmployeeEmploymentDetails;
-import com.athomield.gopayroll.entities.requestbodies.EmployeeRequestBody;
+import com.athomield.gopayroll.entities.dto.EmployeeRequestBody;
 import com.athomield.gopayroll.services.CompanyService;
 import com.athomield.gopayroll.services.EmployeeService;
 import com.athomield.gopayroll.services.employee.EmployeeEmploymentDetailsService;
@@ -31,7 +31,10 @@ public class EmployeeController {
     public ResponseEntity<Employee> createEmployee(@RequestBody EmployeeRequestBody employeeRequestBody) {
         Company employeeCompany = companyService.getCompanyById(employeeRequestBody.getCompany_id());
 
-        Employee newEmployee = new Employee(employeeRequestBody.getName(), employeeRequestBody.getEmail(), employeeRequestBody.getSalary(), employeeCompany);
+        Employee newEmployee = new Employee();
+        newEmployee.setName(employeeRequestBody.getName());
+        newEmployee.setLast_name(employeeRequestBody.getLast_name());
+        newEmployee.setEmail(employeeRequestBody.getEmail());
         newEmployee.setCompany(employeeCompany);
         newEmployee.setAddress(employeeRequestBody.getAddress());
         Employee savedEmployee = employeeService.saveEmployee(newEmployee);

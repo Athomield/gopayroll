@@ -2,7 +2,7 @@ package com.athomield.gopayroll.controllers.employeedetails;
 
 import com.athomield.gopayroll.entities.Company;
 import com.athomield.gopayroll.entities.employeedetails.Department;
-import com.athomield.gopayroll.entities.requestbodies.DepartmentRequestBody;
+import com.athomield.gopayroll.entities.dto.DepartmentRequestBody;
 import com.athomield.gopayroll.services.CompanyService;
 import com.athomield.gopayroll.services.employeedetails.DepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;

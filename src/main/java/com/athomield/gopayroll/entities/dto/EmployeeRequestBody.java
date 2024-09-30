@@ -1,24 +1,16 @@
-package com.athomield.gopayroll.entities.requestbodies;
+package com.athomield.gopayroll.entities.dto;
 
 import com.athomield.gopayroll.entities.Address;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Data
 public class EmployeeRequestBody {
 
     private String name;
+    private String last_name;
 
     private String email;
-
-    private double salary;
 
     private Long company_id;
 

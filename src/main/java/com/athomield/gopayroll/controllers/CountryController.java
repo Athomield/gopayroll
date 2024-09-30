@@ -1,6 +1,9 @@
 package com.athomield.gopayroll.controllers;
 
+import com.athomield.gopayroll.entities.Company;
 import com.athomield.gopayroll.entities.Country;
+import com.athomield.gopayroll.entities.dto.CountryRequestBody;
+import com.athomield.gopayroll.services.CompanyService;
 import com.athomield.gopayroll.services.CountryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,11 +20,20 @@ public class CountryController {
     @Autowired
     private CountryService countryService;
 
+    @Autowired
+    private CompanyService companyService;
 
     // Create a new Country
     @PostMapping
-    public ResponseEntity<Country> createCountry(@RequestBody Country country) {
-        Country savedCountry = countryService.saveCountry(country);
+    public ResponseEntity<Country> createCountry(@RequestBody CountryRequestBody countryRequestBody) {
+        Country newCountry = new Country();
+        newCountry.setCode(countryRequestBody.getCode());
+        newCountry.setName(countryRequestBody.getName());
+
+        Company company = companyService.getCompanyById(countryRequestBody.getCompany_id());
+        newCountry.setCompany(company);
+        Country savedCountry = countryService.saveCountry(newCountry);
+
         return ResponseEntity.ok(savedCountry);
     }
 

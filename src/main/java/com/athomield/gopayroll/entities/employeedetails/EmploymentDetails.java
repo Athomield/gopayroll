@@ -31,7 +31,7 @@ public class EmploymentDetails {
     private List<EmploymentPosition> employmentPositions;
 
     @JsonManagedReference(value = "emp_det_coll_conv")
-    @OneToMany(mappedBy = "employmentDetails")
+    @OneToMany(mappedBy = "employment_details")
     private List<CollectiveConvention> collectiveConventions;
 
     @JsonManagedReference(value = "emp_det_emp_qual")

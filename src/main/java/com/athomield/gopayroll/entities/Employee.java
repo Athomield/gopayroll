@@ -2,6 +2,7 @@ package com.athomield.gopayroll.entities;
 
 import com.athomield.gopayroll.entities.employee.Civility;
 import com.athomield.gopayroll.entities.employee.EmployeeEmploymentDetails;
+import com.athomield.gopayroll.entities.employee.Salary;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -49,6 +50,11 @@ public class Employee {
     @JoinColumn(name = "address_id", referencedColumnName = "id")
     @JsonBackReference(value = "emp_addr")
     Address address;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "salary_id", referencedColumnName = "id")
+    @JsonBackReference(value = "emp_salar")
+    Salary salary;
 
     @ManyToOne
     @JsonBackReference(value = "emp_comp")

@@ -25,7 +25,8 @@ public class DepartmentController {
     // Create a new Department
     @PostMapping
     public ResponseEntity<Department> createDepartment(@RequestBody DepartmentRequestBody departmentRequestBody) {
-        Department department = new Department(departmentRequestBody.getCode(),departmentRequestBody.getDescription());
+        Department department = departmentRequestBody.getDepartment();
+
         Company company = companyService.getCompanyById(departmentRequestBody.getCompany_id());
         department.setEmploymentDetails(company.getEmploymentDetails());
         Department savedDepartment = departmentService.saveDepartment(department);

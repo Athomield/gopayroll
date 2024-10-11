@@ -1,6 +1,7 @@
 package com.athomield.gopayroll.entities.dto;
 
 import com.athomield.gopayroll.entities.Address;
+import com.athomield.gopayroll.entities.employee.Salary;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
@@ -19,4 +20,6 @@ public class EmployeeRequestBody {
 
     private Long department_id;
 
+    @JsonProperty("salary")
+    Salary salary;
 }

@@ -7,6 +7,7 @@ import com.athomield.gopayroll.entities.dto.EmployeeRequestBody;
 import com.athomield.gopayroll.services.CompanyService;
 import com.athomield.gopayroll.services.EmployeeService;
 import com.athomield.gopayroll.services.employee.EmployeeEmploymentDetailsService;
+import com.athomield.gopayroll.services.employee.SalaryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -37,13 +38,14 @@ public class EmployeeController {
         newEmployee.setEmail(employeeRequestBody.getEmail());
         newEmployee.setCompany(employeeCompany);
         newEmployee.setAddress(employeeRequestBody.getAddress());
+        newEmployee.setSalary(employeeRequestBody.getSalary());
         Employee savedEmployee = employeeService.saveEmployee(newEmployee);
 
         EmployeeEmploymentDetails employeeEmploymentDetails = new EmployeeEmploymentDetails();
-        employeeEmploymentDetails.setEmployee(savedEmployee);
-        employeeEmploymentDetailsService.saveEmployeeEmploymentDetails(employeeEmploymentDetails);
+        //employeeEmploymentDetails.setEmployee(savedEmployee);
 
         employeeEmploymentDetails.setDepartmentId(employeeRequestBody.getDepartment_id());
+        employeeEmploymentDetailsService.saveEmployeeEmploymentDetails(employeeEmploymentDetails);
 
         Employee gotEmployee = employeeService.getEmployeeById(savedEmployee.getId());
         gotEmployee.setEmployeeEmploymentDetails(employeeEmploymentDetails);

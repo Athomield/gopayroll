@@ -18,17 +18,13 @@ public class EmployeeEmploymentDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne(mappedBy = "employeeEmploymentDetails")
-    @JsonManagedReference(value = "emp_emp_emp_det")
-    private Employee employee;
+    private long employment_category_id;
 
-    private long employmentCategoryId;
+    private long employment_positions_id;
 
-    private long employmentPositionsId;
+    private long collective_conventions_id;
 
-    private long collectiveConventionsId;
+    private long employment_qualifications_id;
 
-    private long employmentQualificationsId;
-
-    private long departmentId;
+    private long department_id;
 }

@@ -18,11 +18,21 @@ public class CollectiveConvention {
 
     private String code;
 
+    private String label;
+
     private String description;
 
-    @JsonBackReference(value = "emp_det_coll_conv")
+    String monday_hours;
+    String tuesday_hours;
+    String wednesday_hours;
+    String thursday_hours;
+    String friday_hours;
+    String saturday_hours;
+    String sunday_hours;
+
     @ManyToOne
+    @JsonBackReference(value = "emp_det_coll_con")
     @JoinColumn(name="employment_details_id")
-    private EmploymentDetails employmentDetails;
+    private EmploymentDetails employment_details;
 
 }
